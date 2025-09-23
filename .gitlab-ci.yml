@@ -1,0 +1,21 @@
+stages:
+  - build
+  - push
+
+variables:
+  IMAGE_NAME: gitlab.up.pt/PL2/lung-cancer-classification-project-1/prebuilt
+  DOCKER_DRIVER: overlay2
+
+build_image:
+  stage: build
+  image: docker:25.0.3
+  services:
+    - docker:25.0.3-dind
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker build -t $IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
+    - docker push $IMAGE_NAME:$CI_COMMIT_SHORT_SHA
+    - docker tag $IMAGE_NAME:$CI_COMMIT_SHORT_SHA $IMAGE_NAME:latest
+    - docker push $IMAGE_NAME:latest
+  only:
+    - main
