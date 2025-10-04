@@ -1,6 +1,8 @@
 # Lung Cancer Classification - Project 1
 
+## Como correr o codigo
 
+Usem ```./run.sh```, ele vai-vos pedir o caminho para o dataset e correr o código (ainda não testei se funciona em Windows/Mac..)
 
 ## Getting started
 

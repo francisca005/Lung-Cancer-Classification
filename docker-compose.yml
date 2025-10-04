@@ -2,8 +2,7 @@ services:
   project:
     build: .
     volumes:
-      - /home/megu/Code/labiacd/lung-cancer-classification-project-1:/src
-      - /home/megu/Downloads/LIDC-IDRI/:/src/data
+      - .:/src
       # Volume to persist the pylidc database
       - pylidc_db:/root/.pylidc
     command: ["python", "main.py"]
