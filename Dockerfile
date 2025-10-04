@@ -1,19 +1,17 @@
 FROM python:3.9-slim
 
-# system deps
-RUN apt-get update && apt-get install -y \
-    git build-essential libssl-dev libffi-dev \
-    libxml2-dev libxslt1-dev zlib1g-dev \
-    libgl1 libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /workspace
+# Working directory inside the container
+WORKDIR /src 
 
 # python dependencies
 RUN pip install --no-cache-dir \
     numpy scipy scikit-image SimpleITK \
-    matplotlib pydicom
+    matplotlib pydicom pylidc pyradiomics
 
-RUN pip install pylidc==0.2.3 pyradiomics==3.1.0
+# pylidc configuration file
+RUN mkdir -p /root && \
+    echo "[dicom]" > /root/.pylidcrc && \
+    echo "path = /src/data" >> /root/.pylidcrc && \
+    echo "warn = True" >> /root/.pylidcrc
 
 CMD ["python", "main.py"]

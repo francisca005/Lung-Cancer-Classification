@@ -1,20 +1,23 @@
 import pylidc as pl
+import os
 
-# Search for patients
-patients = pl.query(pl.Scan).all()
-print(f"Found {len(patients)} scans in the dataset.")
+data_path = "/src/data"
 
-# Load the first patient scan
-scan = patients[0]
-print(f"Patient ID: {scan.patient_id}, Number of slices: {len(scan))}")
+# query all scans in the database
+scans = pl.query(pl.Scan).all()
 
-import matplotlib.pyplot as plt
+scan = scans[11]
 
-# Get the 3D volume as a numpy array
-volume = scan.to_volume()  # shape: (num_slices, height, width)
+if os.path.exists(data_path):
+    items = os.listdir(data_path)
+    folders = [item for item in items if os.path.isdir(os.path.join(data_path, item))]
+    if scan.patient_id not in folders:
+        print("ERROR: No patient data found, DICOM files missing")
+        print(f"Patient_id missing: {scan.patient_id}")
+        exit(1)
 
-# Show the middle slice
-mid_slice = volume.shape[0] // 2
-plt.imshow(volume[mid_slice], cmap='gray')
-plt.title(f'Slice {mid_slice} of patient {scan.patient_id}')
-plt.show()
+print(f"Patient ID: {scan.patient_id}")
+
+# load the volume
+vol = scan.to_volume()
+print(f"Volume shape: {vol.shape}")
