@@ -49,14 +49,14 @@ Durante a execução do notebook, são gerados os seguintes ficheiros:
 ---
 
 Models: 
-Logistic Regression
-Support Vector Machine (SVC)
-Random Forest
-Gradient Boosting (GB)
+1. Logistic Regression
+2. Support Vector Machine (SVC)
+3. Random Forest
+4. Gradient Boosting (GB)
 
 ---
 
 Feature Selection and Extraction:
-Lasso - L1 regularization
-PCA
+1. Lasso - L1 regularization
+2. PCA
 
