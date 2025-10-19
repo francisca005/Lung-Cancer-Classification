@@ -36,10 +36,13 @@ Durante a execução do notebook, são gerados os seguintes ficheiros:
 ---
 
 ## Estrutura do Notebook
-1. **Data Preparation** — Limpeza, integração e estruturação dos datasets.  
-2. **Feature Engineering** — Extração e seleção de features (LASSO, PCA).  
-3. **Model Training** — Treino dos modelos (Logistic Regression, SVM, Random Forest, Gradient Boosting).  
-4. **Evaluation** — Avaliação das métricas AUROC, AUPRC, F1 e Balanced Accuracy.  
-5. **Export** — Salvamento do modelo calibrado e resultados.  
-
+1. Business Understanding 
+2. Data Understanding
+3. Data Preparation
+4. Modeling 
+5. Evaluation
+6. Deployment & Ethics 
+7. Export and Reproducibility
+8. Final Project Conclusion 
+9. References
 
