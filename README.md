@@ -46,3 +46,17 @@ Durante a execução do notebook, são gerados os seguintes ficheiros:
 8. Final Project Conclusion 
 9. References
 
+---
+
+Models: 
+Logistic Regression
+Support Vector Machine (SVC)
+Random Forest
+Gradient Boosting (GB)
+
+---
+
+Feature Selection and Extraction:
+Lasso - L1 regularization
+PCA
+
